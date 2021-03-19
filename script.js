@@ -11,21 +11,23 @@ function onInput() {
     }, 1000);
 }
 
-function update() {
-    charLength();
-    wordLength();
+function update(value) {
+    charLength(value);
+    wordLength(value);
 }
 
-function charLength() {
-    let inputValue = input.value
-    let charCount = inputValue.length
-    document.getElementById("character-output").innerHTML = `${charCount} Characters`
+function charLength(value) {
+    let newArr = value.split("");
+    let updatedArr = newArr.filter((example) => example.trim() !== "");
+    document.getElementById("character-output").innerHTML = `${updatedArr.length} Characters`
 }
 
-function wordLength() {
-    let inputValue = input.value;
-    let newArr = new Array(inputValue);
-    let updatedArr = (newArr.join(' ').split(' '));
-    let updatedArrLength = updatedArr.length
-    document.getElementById("word-output").innerHTML = `${updatedArrLength} Words`
+function wordLength(value) {
+    let newArr = [value.trim()];
+    let updatedArr = newArr.join(' ').split(' ');
+    document.getElementById("word-output").innerHTML = `${updatedArr.length} Words`
 }
+
+
+
+// let updatedArr = newArr.filter((value) => value != " " || value != "");
